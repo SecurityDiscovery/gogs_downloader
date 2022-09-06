@@ -1,2 +1,4 @@
-requests
-urllib3
+BeautifulSoup==3.2.2
+beautifulsoup4==4.11.1
+requests==2.27.1
+urllib3==1.26.9

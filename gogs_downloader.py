@@ -24,7 +24,7 @@ parser = argparse.ArgumentParser()
 
 parser.add_argument('-t', '--target', required=True,
                     help="The target. E.g. https://example.com/gogs/ or https://gogs.example.com/")
-parser.add_argument('-o', '--output', required=True, default=".",
+parser.add_argument('-o', '--output', required=False, default=".",
                     help="The destination directory to clone the repositories to")
 parser.add_argument('-s', '--s', required=False, action="store_true", default=False, help="Only show list of repos ("
                                                                                           "not git clone)")
@@ -38,7 +38,7 @@ args.output = args.output if args.output.endswith("/") else args.output + "/"
 if args.v:
     print(f"[+] Target: '{args.target}', Output: '{args.output}'")
 
-if not os.path.isdir(args.output):
+if not args.s and not os.path.isdir(args.output):
     print("[-] Output directory does not exist. Verify the output directory exists and try again.\n", file=sys.stderr)
     sys.exit(1)
 
