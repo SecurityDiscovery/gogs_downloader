@@ -130,7 +130,8 @@ else:
     print(f"[+] Cloning {len(all_repos)} repos")
     for repo in all_repos:
         print(f"[+] Cloning {repo}")
-        for ch in ['"', '\\', '?', '#', ';', '\n', '&']:
-            c_repo = repo.replace(ch, '')
-        out_dir = os.path.join(args.output, slugify(c_repo.replace(args.target, "").replace("/", "-")))
+        c_repo = repo.replace(".git", "").replace(args.target, "").replace("/", "--")
+        for ch in [":", '"', '\\', '?', '#', ';', '\n', '&']:
+            c_repo = c_repo.replace(ch, '')
+        out_dir = os.path.join(args.output, slugify(c_repo))
         git("clone", repo, out_dir)
