@@ -101,8 +101,12 @@ def extract_repos(page_text):
 
 page_number = 0
 all_repos = []
+iteration = 0
 while True:
     time.sleep(0.3)
+    iteration = iteration + 1
+    if iteration > 100:
+        break
     try:
         base_request = s.get(args.target + "explore/repos", params=build_url(page_number))
         repos = extract_repos(base_request.text)
