@@ -3,7 +3,6 @@
 import argparse
 import json
 import os
-import re
 import subprocess
 import sys
 import time
@@ -24,10 +23,11 @@ requests.packages.urllib3.disable_warnings(category=InsecureRequestWarning)
 parser = argparse.ArgumentParser()
 
 parser.add_argument('-t', '--target', required=True,
-                    help="The target. E.g., https://example.com/gogs/ or https://gogs.example.com/")
+                    help="The target. E.g. https://example.com/gogs/ or https://gogs.example.com/")
 parser.add_argument('-o', '--output', required=True, default=".",
                     help="The destination directory to clone the repositories to")
-parser.add_argument('-s', '--s', required=False, action="store_true", default=False, help="Only show list of repos (not git clone)")
+parser.add_argument('-s', '--s', required=False, action="store_true", default=False, help="Only show list of repos ("
+                                                                                          "not git clone)")
 parser.add_argument('-v', '--v', required=False, action="store_true", default=False, help="Verbose?")
 
 args = parser.parse_args()

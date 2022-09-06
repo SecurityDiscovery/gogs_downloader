@@ -15,7 +15,7 @@ usage: gogs_downloader.py [-h] -t TARGET -o OUTPUT [-s] [-v]
 optional arguments:
   -h, --help            show this help message and exit
   -t TARGET, --target TARGET
-                        The target. E.g., https://example.com/gogs/ or https://gogs.example.com/
+                        The target. E.g. https://example.com/gogs/ or https://gogs.example.com/
   -o OUTPUT, --output OUTPUT
                         The destination directory to clone the repositories to
   -s, --s               Only show list of repos (not git clone)
