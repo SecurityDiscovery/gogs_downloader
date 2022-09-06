@@ -1,5 +1,12 @@
 # gogs_downloader
 
+## Installation
+
+- Python3 needed
+- `git clone https://github.com/SecurityDiscovery/gogs_downloader.git`
+- `cd gogs_downloader`
+- `python3 -m pip install -r requirements.txt`
+
 ## Usage
 
 ```commandline
