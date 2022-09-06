@@ -91,7 +91,7 @@ def extract_repos(page_text):
                 link = link.get("href")
                 if link[0] == "/":
                     link = link[1:]
-                link = f'{args.target}{link}.git'
+                link = f'{args.target}{link}.git'.strip()
                 arepos = arepos + [link]
             return arepos
     except Exception as e:
@@ -104,10 +104,12 @@ all_repos = []
 while True:
     time.sleep(1)
     try:
-        base_request = requests.get(args.target + "explore/repos", params=build_url(page_number))
+        base_request = s.get(args.target + "explore/repos", params=build_url(page_number))
         repos = extract_repos(base_request.text)
         if args.v:
             print(f"[+] Page {page_number}, Found repos: {len(repos)}")
+            for repo in repos:
+                print(f"- {repo}")
         if len(repos) > 0:
             page_number = page_number + 1
             all_repos = all_repos + repos
@@ -120,12 +122,7 @@ while True:
 all_repos = list(set(all_repos))
 
 if args.s:
-    if args.v:
-        print("Repos found:")
-        for repo in all_repos:
-            print(f"- {repo}")
-    else:
-        print(json.dumps(all_repos))
+    print(json.dumps(all_repos))
 else:
     print(f"[+] Cloning {len(all_repos)} repos")
     for repo in all_repos:
@@ -134,4 +131,4 @@ else:
         for ch in [":", '"', '\\', '?', '#', ';', '\n', '&']:
             c_repo = c_repo.replace(ch, '')
         out_dir = os.path.join(args.output, slugify(c_repo))
-        git("clone", repo, out_dir)
+        git("clone", repo.strip(), out_dir)
