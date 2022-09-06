@@ -1,5 +1,9 @@
 # gogs_downloader
 
+## Possible improvements
+- [ ] Multithreading (requests, git cloning)
+- [ ] Clearer command line options (e.g., simple/json output, verbosity level)
+
 ## Installation
 
 - Python3 needed
