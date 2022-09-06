@@ -3,6 +3,7 @@
 ## Possible improvements
 - [ ] Multithreading (requests, git cloning)
 - [ ] Clearer command line options (e.g., simple/json output, verbosity level)
+- [ ] Tidy code
 
 ## Installation
 
